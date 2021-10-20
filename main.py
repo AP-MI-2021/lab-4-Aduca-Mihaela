@@ -98,10 +98,44 @@ def test_supraprim():
     assert supraprim([239, 173, 235]) == 239, 235
     assert supraprim([1, 215, 325]) == 325
 
+
+def cmmdc(m, n):
+    """
+    Calculeaza CMMDC a doua numere.
+    :param m: nr intreg.
+    :param n: nr. intreg.
+    :return: CMMDC
+    """
+    m = int(input("m="))
+    n = int(input("n="))
+
+    while m != n:
+        if m > n:
+            m = m - n
+        else:
+            n = n - m
+
+
+def lista_noua(l):
+    """
+    Afișarea listei obținute din lista inițială în care numerele pozitive și nenule au fost înlocuite cu
+CMMDC-ul lor.
+    :param l: lista de numere intregi
+    :return: o lista noua, in care nr pozitive si nenule au fost inlocuite cu CMMDC ul lor.
+    """
+    ln = []
+    lnou = []
+    for x in l:
+        if x > 0:
+            ln.append(x)
+    #for i in range(ln):
+        #for j in  range(i,ln):
+            lnou.append(cmmdc(i,j))
+
+
 def main():
     test_negativ_nenule()
     test_cel_mai_mic()
-
 
     l = []
     while True:
@@ -116,6 +150,8 @@ def main():
             print(cel_mai_mic(l,nrdat))
         if optiune == "4":
             print(supraprim(l))
+        if optiune == "5":
+            print(lista_noua(l))
         elif optiune == "6":
             break
         else:
